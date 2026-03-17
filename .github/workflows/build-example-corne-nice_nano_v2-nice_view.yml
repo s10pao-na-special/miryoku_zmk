@@ -11,3 +11,4 @@ jobs:
       board: '["nice_nano@2.0.0"]'
       shield: '["corne_left nice_view_adapter nice_view","corne_right nice_view_adapter nice_view"]'
       branches: '["zmkfirmware/zmk/v0.3"]'
+      kconfig: '["CONFIG_ZMK_DISPLAY=y"]'
