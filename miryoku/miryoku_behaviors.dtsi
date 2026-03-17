@@ -9,7 +9,7 @@
       tapping-term-ms = <U_TAPPING_TERM>;
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
-    };{
+    };
     u_lmt: u_lmt {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
