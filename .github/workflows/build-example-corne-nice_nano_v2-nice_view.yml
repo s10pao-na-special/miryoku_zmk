@@ -13,4 +13,4 @@ jobs:
       branches: '["zmkfirmware/zmk/v0.3"]'
       clipboard: '["win"]'
       kconfig: '["CONFIG_ZMK_POINTING=y\nCONFIG_ZMK_PM_SOFT_OFF=y\nCONFIG_ZMK_WIDGET_BATTERY_STATUS_SHOW_PERCENTAGE=y"]'
-      custom_config: '["#define MIRYOKU_KLUDGE_SOFT_OFF"]'
+      custom_config: '["#define MIRYOKU_KLUDGE_SOFT_OFF\n#define MIRYOKU_KLUDGE_GLOBALSHIFTFUNCTIONS"]'
