@@ -9,7 +9,7 @@ jobs:
     secrets: inherit
     with:
       board: '["nice_nano_v2"]'
-      shield: '["corne_left nice_view_adapter nice_view","corne_right nice_view_adapter nice_view"]'
+      shield: '["corne_left nice_view_adapter nice_view","corne_right nice_view_adapter nice_view","settings_reset"]'
       branches: '["s10pao-na-special/zmk/v0.3"]'
       clipboard: '["win"]'
       kconfig: '["CONFIG_ZMK_POINTING=y\nCONFIG_ZMK_PM_SOFT_OFF=y"]'
