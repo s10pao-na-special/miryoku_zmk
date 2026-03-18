@@ -12,5 +12,5 @@ jobs:
       shield: '["corne_left nice_view_adapter nice_view","corne_right nice_view_adapter nice_view","settings_reset"]'
       branches: '["s10pao-na-special/zmk/v0.3"]'
       clipboard: '["win"]'
-      kconfig: '["CONFIG_ZMK_KEYBOARD_NAME=s10pao_crkbd\nCONFIG_ZMK_POINTING=y\nCONFIG_ZMK_PM_SOFT_OFF=y"]'
+      kconfig: '["CONFIG_ZMK_POINTING=y\nCONFIG_ZMK_PM_SOFT_OFF=y\nCONFIG_ZMK_KEYBOARD_NAME=s10pao_crkbd"]'
       custom_config: '["#define MIRYOKU_KLUDGE_SOFT_OFF\n#define MIRYOKU_KLUDGE_GLOBALSHIFTFUNCTIONS"]'
