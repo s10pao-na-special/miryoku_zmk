@@ -143,7 +143,7 @@ jobs:
             test "$MIRYOKU_DEBUG" = 'MIRYOKU_DEBUG_TRUE' && cp "$kconfig_file" "$artifact_dir"
             run_name="$run_name kconfig_"`echo "${{ matrix.kconfig }}" | md5sum | head -c "$hash_length"`
           fi
-          echo CONFIG_ZMK_KEYBOARD_NAME=s10pao >> "$kconfig_file"
+          echo 'CONFIG_ZMK_KEYBOARD_NAME="s10pao"' >> "$kconfig_file"
 
           if [ -n "${{ matrix.branches }}" -a "${{ matrix.branches }}" != 'default' ]
           then
