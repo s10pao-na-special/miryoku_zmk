@@ -137,10 +137,7 @@ jobs:
           test "$MIRYOKU_DEBUG" = 'MIRYOKU_DEBUG_TRUE' && cp "$configfile" "$artifact_dir"
           
           kconfig_file="${GITHUB_WORKSPACE}/miryoku_zmk/config/$keyboard_split.conf"
-          if test -e "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" 
-          then
-            cat "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" >> "$kconfig_file"
-          fi
+          test -e "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" && cat "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" >> "$kconfig_file"
           if [ -n "${{ matrix.kconfig }}" -a "${{ matrix.kconfig }}" != 'default' ]
           then
             echo "${{ matrix.kconfig }}" >> "$kconfig_file"
