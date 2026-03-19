@@ -138,7 +138,6 @@ jobs:
           
           kconfig_file="${GITHUB_WORKSPACE}/miryoku_zmk/config/$keyboard_split.conf"
           # test -e "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" && cat "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" >> "$kconfig_file"
-          touch $kconfig_file
           if [ -n "${{ matrix.kconfig }}" -a "${{ matrix.kconfig }}" != 'default' ]
           then
             echo "${{ matrix.kconfig }}" >> "$kconfig_file"
@@ -146,7 +145,7 @@ jobs:
           fi
           if [ -e "${kconfig_file}" ]
           then
-            run_name="$run_name kconfig_""$(cat "${GITHUB_WORKSPACE}/miryoku_zmk/config/$keyboard_split.conf" | md5sum | head -c "$hash_length")"
+            run_name="$run_name kconfig_""$(cat "$kconfig_file" | md5sum | head -c "$hash_length")"
           fi
 
           if [ -n "${{ matrix.branches }}" -a "${{ matrix.branches }}" != 'default' ]
