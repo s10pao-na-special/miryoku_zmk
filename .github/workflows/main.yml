@@ -137,21 +137,10 @@ jobs:
           test "$MIRYOKU_DEBUG" = 'MIRYOKU_DEBUG_TRUE' && cp "$configfile" "$artifact_dir"
           
           kconfig_file="${GITHUB_WORKSPACE}/miryoku_zmk/config/$keyboard_split.conf"
-          # if [ -e "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" ]
-          # then
-          #   cat "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" | sed -E -e '/^\s*$/d' -e '/^\s*#/d' >> "$kconfig_file"
-          # fi
-          cat << EOL >> "$kconfig_file"
-          CONFIG_ZMK_POINTING=y
-          CONFIG_ZMK_PM_SOFT_OFF=y
-          CONFIG_ZMK_KEYBOARD_NAME="s10pao_crkbd_001"
-          CONFIG_ZMK_SLEEP=y
-          CONFIG_ZMK_DISPLAY=yCONFIG_ZMK_DISPLAY_BLANK_ON_IDLE=y
-          CONFIG_ZMK_IDLE_TIMEOUT=15000
-          CONFIG_ZMK_BATTERY_REPORTING=y
-          CONFIG_ZMK_BATTERY_REPORT_INTERVAL=300
-          CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=600000
-          EOL
+          if [ -e "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" ]
+          then
+            cat "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" | sed -E -e '/^\s*$/d' -e '/^\s*#/d' >> "$kconfig_file"
+          fi
           if [ -n "${{ matrix.kconfig }}" -a "${{ matrix.kconfig }}" != 'default' ]
           then
             echo "${{ matrix.kconfig }}" >> "$kconfig_file"
