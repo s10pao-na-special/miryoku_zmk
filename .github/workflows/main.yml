@@ -140,7 +140,7 @@ jobs:
           if [ -e "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" ]; then
             sed -E -e '/^\s*$/d' -e '/^\s*#/d' "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" >> "$kconfig_file"
           fi
-          if grep -qE right <<< "$kconfig_file"; then
+          if echo "$kconfig_file" | grep -qE right ; then
             echo CONFIG_ZMK_SPLIT_ROLE_CENTRAL=y >> "$kconfig_file"
           else
             echo CONFIG_ZMK_SPLIT_ROLE_CENTRAL=n >> "$kconfig_file"
