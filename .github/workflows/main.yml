@@ -137,7 +137,9 @@ jobs:
           test "$MIRYOKU_DEBUG" = 'MIRYOKU_DEBUG_TRUE' && cp "$configfile" "$artifact_dir"
           
           kconfig_file="${GITHUB_WORKSPACE}/miryoku_zmk/config/$keyboard_split.conf"
-          sed -E -e '/^\s*$/d' -e '/^\s*#/d' "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" >> "$kconfig_file"
+          if [ -e "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" ]; then
+            sed -E -e '/^\s*$/d' -e '/^\s*#/d' "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" >> "$kconfig_file"
+          fi
           if [ -n "${{ matrix.kconfig }}" -a "${{ matrix.kconfig }}" != 'default' ]
           then
             echo "${{ matrix.kconfig }}" >> "$kconfig_file"
