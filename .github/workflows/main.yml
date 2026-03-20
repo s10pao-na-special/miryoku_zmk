@@ -141,7 +141,15 @@ jobs:
           # then
           #   cat "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" | sed -E -e '/^\s*$/d' -e '/^\s*#/d' >> "$kconfig_file"
           # fi
-          (IFS=$'\n'; a=( $(cat "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" | sed -E -e '/^\s*$/d' -e '/^\s*#/d') ); for((i=0; i<"${#a[@]}"-1; i++)); do printf '%s\n' "${a[@]:i:1}"; done; last=$(("${#a[@]}"-1)); echo -n "${a[last]}";) >> "$kconfig_file"
+          (
+            IFS=$'\n'
+            a=( $(cat "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" | sed -E -e '/^\s*$/d' -e '/^\s*#/d') )
+            for((i=0; i<"${#a[@]}"-1; i++))
+            do
+              printf '%s\n' "${a[@]:i:1}"; done; last=$(("${#a[@]}"-1))
+            done
+            echo -n "${a[last]}"
+          ) >> "$kconfig_file"
           if [ -n "${{ matrix.kconfig }}" -a "${{ matrix.kconfig }}" != 'default' ]
           then
             echo "${{ matrix.kconfig }}" >> "$kconfig_file"
