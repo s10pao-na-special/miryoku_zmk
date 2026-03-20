@@ -141,13 +141,13 @@ jobs:
           # then
           #   cat "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" | sed -E -e '/^\s*$/d' -e '/^\s*#/d' >> "$kconfig_file"
           # fi
-          cat "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" | tac | sed -n '2,$p' | tac >> "$kconfig_file"
-          tail -n 1 "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" | tr -d \\n >> "$kconfig_file"
+          tac "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" | sed -n '2,$p' | tac >> "$kconfig_file"
+          tail -n 1 "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" | tr -d '\n' >> "$kconfig_file"
+          sed -Ei '/^\s*$/d' "$kconfig_file"
           if [ -n "${{ matrix.kconfig }}" -a "${{ matrix.kconfig }}" != 'default' ]
           then
             echo "${{ matrix.kconfig }}" >> "$kconfig_file"
-            # test "$MIRYOKU_DEBUG" = 'MIRYOKU_DEBUG_TRUE' && cp "$kconfig_file" "$artifact_dir"
-            cp "$kconfig_file" "$artifact_dir"
+            test "$MIRYOKU_DEBUG" = 'MIRYOKU_DEBUG_TRUE' && cp "$kconfig_file" "$artifact_dir"
           fi
           if [ -e "${kconfig_file}" ]
           then
