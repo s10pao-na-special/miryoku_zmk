@@ -145,7 +145,7 @@ jobs:
             sed -E -e '/^\s*$/d' -e '/^\s*#/d' "${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_kconfig.conf" >> "$kconfig_file"
           fi
           if [ "${{ matrix.central }}" != default ]; then
-            if [[ "$kconfig_file" =~ _"${{ matrix.central }}" ]]; then
+            if echo "$kconfig_file" | grep -qE _"${{ matrix.central }}"; then
               echo CONFIG_ZMK_SPLIT_ROLE_CENTRAL=y >> "$kconfig_file"
             else
               echo CONFIG_ZMK_SPLIT_ROLE_CENTRAL=n >> "$kconfig_file"
