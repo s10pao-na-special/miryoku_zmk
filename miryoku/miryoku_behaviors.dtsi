@@ -18,7 +18,7 @@
       tapping-term-ms = <U_TAPPING_TERM>;
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
-      require-prior-idle-ms = <125>;
+      //require-prior-idle-ms = <125>;
       hold-trigger-key-positions = <RT0 RT1 RT2 RT3 RT4   RM0 RM1 RM2 RM3 RM4   RB0 RB1 RB2 RB3 RB4   LH2 LH1 LH0 RH0 RH1 RH2>;
       hold-trigger-on-release;
     };
@@ -28,7 +28,7 @@
       tapping-term-ms = <U_TAPPING_TERM>;
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
-      require-prior-idle-ms = <125>;
+      //require-prior-idle-ms = <125>;
       hold-trigger-key-positions = <LT4 LT3 LT2 LT1 LT0   LM4 LM3 LM2 LM1 LM0   LB4 LB3 LB2 LB1 LB0   LH2 LH1 LH0 RH0 RH1 RH2>;
       hold-trigger-on-release;
     };
