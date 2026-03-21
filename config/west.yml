@@ -13,6 +13,6 @@ manifest:
       remote: zmkfirmware
       import: app/west.yml
     - name: zmk-helpers
-      url-base: urob
+      remote: urob
       import: include
     
