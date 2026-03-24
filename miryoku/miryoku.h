@@ -29,7 +29,6 @@
 
 #include "miryoku_double_tap_guard.h"
 
-#undef U_BOOT
 #include "miryoku_shift_functions.h"
 
 #include "miryoku_mousekeys.h"
