@@ -1,14 +1,18 @@
 // Copyright 2022 Manna Harbour
 // https://github.com/manna-harbour/miryoku
 
+#include "zmk-helpers/key-labels/42.h"
+
 / {
   behaviors {
     u_mt: u_mt {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
       tapping-term-ms = <U_TAPPING_TERM>;
-      flavor = "tap-preferred";
+      flavor = "balanced";
       bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = < LM4 LM3 LM2 LM1  RM1 RM2 RM3 RM4  LB4 RB4 >;
+      hold-trigger-on-release;
     };
     u_lt: u_lt {
       compatible = "zmk,behavior-hold-tap";
